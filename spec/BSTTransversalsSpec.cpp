@@ -103,11 +103,10 @@ namespace spec
 			inorder(root, &results[0][0]);
 			preorder(root, &results[1][0]);
 			postorder(root, &results[2][0]);
-
 			for (int i = 0; i < 3; i++){
 				for (int j = 0; j < elements; j++){
 
-					Assert::AreEqual(ans[i][j],results[i][j], L"TestCase Failed for 3", 1, 2);
+					Assert::AreEqual(ans[i][j],results[i][j], L"TestCase Failed for " + i + " " + j, 1, 2);
 				}
 			}
 		};
@@ -173,17 +172,16 @@ namespace spec
 		[TestMethod, Timeout(2000)]
 		void Transversals_CustomTestCase()
 		{
-			struct node *root = NULL;
+			/*struct node *root = NULL;
 			int nums[10] = { 40,65,89,4,6,8,12,16,67,72};
 			int elements = 10;
 			for (int i = 0; i < elements; i++){
 				root = add_node_spec(root, nums[i]);
 			}
-			/*
 			int ans[3][10] = {
-				{ Expected Inorder Array },
-				{ Expected PreOrder Array },
-				{ Expected PostOrder Array }
+				{ 4, 6, 8, 12, 16, 40, 65, 67, 72, 89},
+				{ 40, 4, 6, 8, 12, 16, 65, 89, 67, 72},
+				{ 16, 12, 8, 6, 4, 72, 67, 89, 65, 40}
 			};
 			int results[3][10];
 			inorder(root, results[0]);
@@ -193,11 +191,9 @@ namespace spec
 			//Assert compares the First 2 parameters ,and raises Error if they are not equal
 			for (int i = 0; i < 1; i++){
 				for (int j = 0; j < 4; j++){
-					Assert::AreEqual(ans[i][j], results[i][j], L"TestCase Failed for TenElems", 1, 2);
+					Assert::AreEqual(ans[i][j], results[i][j], L"TestCase Failed for TenElems " + i + " " + j, 1, 2);
 				}
-			}
-			*/
-
+			}*/
 		};
 
 	};
