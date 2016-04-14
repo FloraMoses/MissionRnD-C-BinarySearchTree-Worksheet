@@ -102,9 +102,9 @@ namespace spec
 		[TestMethod, Timeout(2000)]
 		void Height_Medium(){
 			struct node *root = NULL;
-			int nums[20] = { 10, 2,1, 15 ,25,100,300};
+			int nums[20] = { 10, 2, 1, 15 , 25, 100, 300};
 		
-			for (int i = 0; i < 7; i++){
+			for (int i = 0; i < 7; i++) {
 				root = add_node_spec(root, nums[i]);
 			}
 
