@@ -64,7 +64,6 @@ namespace spec
 		}
 		struct node * add_node_spec(struct node *root, int data){
 			if (root == NULL) return new_node_spec(data);
-
 			if (data < root->data)
 				root->left = add_node_spec(root->left, data);
 			else if (data > root->data)
@@ -86,31 +85,24 @@ namespace spec
 
 			return 1 + righth;
 		}
-		int isBalanced(struct node *root)
-		{
-
+		int isBalanced(struct node *root) {
 			if (root == NULL)
 				return 1;
-
 			int lefth;
 			int righth;
 			lefth = get_height(root->left);
 			righth = get_height(root->right);
-
 			int diff = lefth - righth;
-			if (diff < 0){
-				diff = diff*-1;
+			if (diff < 0) {
+				diff = diff * -1;
 			}
-
 			if (diff <= 1){
 				int leftcheck = isBalanced(root->left);
 				int rightcheck = isBalanced(root->right);
-
 				if ((leftcheck == 1) && (rightcheck == 1)){
 					return 1;
 				}
 			}
-
 			return 0;
 		}
 		int search(struct node* root, int key)
@@ -160,7 +152,7 @@ namespace spec
 				}
 			}
 			check = check + c2 + c3;;
-			Assert::AreEqual(3, check, L"Array to BSt One failed", 1, 2);
+			Assert::AreEqual(3, check, L"Array to BSt One failed Balanced:" + (check - (c2 + c3)) + " root:" + c2 + " datas:" + c3 + " ", 1, 2);
 		};
 
 		[TestMethod, Timeout(2000)]
@@ -184,7 +176,7 @@ namespace spec
 				}
 			}
 			check =check+ c2+c3;
-			Assert::AreEqual(3, check, L"Array to BSt Three failed", 1, 2);
+			Assert::AreEqual(3, check, L"Array to BSt Three failed Balanced:" + (check - (c2 + c3)) + " root:" + c2 + " datas:" + c3 + " ", 1, 2);
 		};
 
 		[TestMethod, Timeout(2000)]
@@ -207,12 +199,11 @@ namespace spec
 						if (root->right->data == 4 || root->right->data == 5){
 							c2 = 1;
 						}
-					}
-				
+					}		
 				}
 			}
 			check = check + c2 + c3;
-			Assert::AreEqual(3, check, L"Array to BST Three failed", 1, 2);
+			Assert::AreEqual(3, check, L"Array to BST Three failed Balanced:" + (check - (c2 + c3)) + " root:" + c2 + " datas:" + c3 + " ", 1, 2);
 		};
 
 		[TestMethod, Timeout(2000)]
@@ -236,7 +227,7 @@ namespace spec
 				}
 			}
 			check =check+ c2+c3;
-			Assert::AreEqual(3, check, L"Array to BST Medium case 1 failed", 1, 2);
+			Assert::AreEqual(3, check, L"Array to BST Medium case 1 failed Balanced:" + (check - (c2 + c3)) + " root:" + c2 + " datas:" + c3 + " ", 1, 2);
 		};
 
 		[TestMethod, Timeout(1000)]
@@ -259,9 +250,7 @@ namespace spec
 				}
 			}
 			check =check+c3+ c2;
-			Assert::AreEqual(3, check, L"Array to BST Large case 1 failed", 1, 2);
+			Assert::AreEqual(3, check, L"Array to BST Large case 1 failed Balanced:" + (check - (c2 + c3)) + " root:" + c2 + " datas:" + c3 + " ", 1, 2);
 		};
-
-		
 	};
 }
