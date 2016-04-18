@@ -15,11 +15,41 @@ struct node{
 	int data;
 	struct node *right;
 };
+struct node * new_node_spec(int data){
+	struct node *temp = (struct node *)malloc(sizeof(struct node));
+	temp->data = data;
+	temp->left = NULL;
+	temp->right = NULL;
+	return temp;
+}
+struct node * add_node_spec(struct node *root, int data){
+	if (root == NULL) return new_node_spec(data);
+	if (data < root->data)
+		root->left = add_node_spec(root->left, data);
+	else if (data > root->data)
+		root->right = add_node_spec(root->right, data);
+
+	return root;
+}
+void swap_nodes(struct node *a, struct node *b){
+	int temp = a->data;
+	a->data = b->data;
+	b->data = temp;
+}
 int main() {
-	int arr[10] = { 1, 2, 3, 4, 5 };
-	//int arr[10] = { -123, 12, 120, 455, 1160, 2100, 4545, 12124, 12344 };
 	struct node *root = NULL;
-	root = convert_array_to_bst(arr, 3);
+	int nums[20] = { 50, 25, 75, 15, 35, 90, 5, 17, 45, 120, 1, 2, 19, 39, 49, 100 };
+	for (int i = 0; i < 16; i++) {
+		root = add_node_spec(root, nums[i]);
+	}
+	struct node *swaplist[2];
+	int originaldata[2];
+	swaplist[0] = root->left->left->right->right;
+	swaplist[1] = root;
+	originaldata[0] = swaplist[0]->data;
+	originaldata[1] = swaplist[1]->data;
+	swap_nodes(swaplist[0], swaplist[1]);
+	fix_bst(root);
 	getchar();
 	return 0;
 }

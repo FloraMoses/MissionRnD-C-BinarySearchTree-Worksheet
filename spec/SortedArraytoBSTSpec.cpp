@@ -71,18 +71,14 @@ namespace spec
 
 			return root;
 		}
-		int get_height(struct node* node)
-		{
-
+		int get_height(struct node* node) {
 			if (node == NULL)
 				return 0;
-
 			int lefth = get_height(node->left);
 			int righth = get_height(node->right);
-			if (lefth > righth){
+			if (lefth > righth) {
 				return 1 + lefth;
 			}
-
 			return 1 + righth;
 		}
 		int isBalanced(struct node *root) {

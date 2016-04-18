@@ -183,7 +183,7 @@ namespace spec
 
 
 			int *arr = BSTRighttoLeftRows(root);
-			int ans[10] = { 50,75,25,99,60,30,53,27,57,51 };
+int ans[10] = { 50,75,25,99,60,30,53,27,57,51 };
 			int len = 10;
 			for (int i = 0; i < len; i++){
 				Assert::AreEqual(ans[i], arr[i], L"Rows Fail Large case ", 1, 2);

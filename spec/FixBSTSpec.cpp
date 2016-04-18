@@ -1,39 +1,28 @@
 #include "stdafx.h"
 #include "./../src/FixBST.cpp"
-
-
 using namespace System;
 using namespace System::Text;
 using namespace System::Collections::Generic;
 using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
-
-
-namespace spec
-{
+namespace spec {
 	[TestClass]
-	public ref class FixBSTSpec
-	{
+	public ref class FixBSTSpec {
 	private:
 		TestContext^ testContextInstance;
-
 	public:
 		/// <summary>
 		///Gets or sets the test context which provides
 		///information about and functionality for the current test run.
 		///</summary>
-		property Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ TestContext
-		{
-			Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ get()
-			{
+		property Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ TestContext {
+			Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ get() {
 				return testContextInstance;
 			}
-			System::Void set(Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ value)
-			{
+			System::Void set(Microsoft::VisualStudio::TestTools::UnitTesting::TestContext^ value) {
 				testContextInstance = value;
 			}
 		};
-
-#pragma region Additional test attributes
+		#pragma region Additional test attributes
 		//
 		//You can use the following additional attributes as you write your tests:
 		//
@@ -234,8 +223,7 @@ namespace spec
 		{
 			struct node *root = NULL;
 			int nums[20] = { 50, 25, 75, 15, 35, 90, 5, 17, 45, 120, 1, 2, 19, 39, 49, 100 };
-
-			for (int i = 0; i < 16; i++){
+			for (int i = 0; i < 16; i++) {
 				root = add_node_spec(root, nums[i]);
 			}
 			struct node *swaplist[2];
@@ -244,11 +232,8 @@ namespace spec
 			swaplist[1] = root;
 			originaldata[0] = swaplist[0]->data;
 			originaldata[1] = swaplist[1]->data;
-
 			swap_nodes(swaplist[0], swaplist[1]);
-
 			fix_bst(root);
-
 			for (int i = 0; i < 1; i++){
 				Assert::AreEqual(originaldata[i], swaplist[i]->data, L"Fix BST Failed Largecase 2", 1, 2);
 			}
